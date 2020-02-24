@@ -1,0 +1,10 @@
+public class LinkedStructure<T> {
+  ...
+  private static class Node<T> {
+    T item;
+    Node<T> links-to-other-nodes;
+  }
+}
+The Node class is a private inner class which is self-contained, accessing no internal parent class data,
+and so is static. The Node class has no methods whatsoever. The data members are meant to be manipulated
+directly instead of through getters and setters in order to eliminate access overhead.
