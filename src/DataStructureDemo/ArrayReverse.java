@@ -12,6 +12,7 @@ public class ArrayReverse {
 	        for(int i=0;i<size;i++){
 	            arr[i] = s.nextInt();
 	        }
+	        
 	    long[] res= IntStream.range(0, size).mapToLong(i -> arr[size-1-i]).toArray();
 	    for (long object : res) {
 	    	 System.out.println(object);
