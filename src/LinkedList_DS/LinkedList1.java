@@ -1,12 +1,12 @@
 package LinkedList_DS;
 
-public class LinkedList {
+public class LinkedList1 {
 	private Node head;
 
 	private void getStart() {
 		try {
 			// 1.
-			createList(head);
+			head = createList(head);
 			traversal(head);
 			// 2.
 			insertAtBegining(0);
@@ -18,10 +18,10 @@ public class LinkedList {
 			insertAtPosition(6, 5);// (position,value)
 			traversal(head);
 			// 5.
-			deleteAtPosition(5, 33);// (position,value)
+			deleteAtPosition(head,5, 33);// (position,value)
 			traversal(head);
 			// 6.
-			deleteValue(3);
+			deleteValue(head,3);
 			traversal(head);
 			// 7.
 			System.out.println("Logic 1 | List length using Recursive method = " + listLength());
@@ -130,12 +130,12 @@ public class LinkedList {
 		head = null;
 	}
 
-	private void deleteAtPosition(int position, int key) {
+	public void deleteAtPosition(Node head,int position, int key) {
 		Node n = head, n_prv = null;
 		int postionCount = 0;
 		if (n == null)
 			return;
-		while (n != null && key != n.getData() && postionCount != position) {
+		while (n != null && postionCount != position) {//key != n.getData() && 
 			n_prv = n;
 			n = n.getNext();
 			++postionCount;
@@ -147,7 +147,7 @@ public class LinkedList {
 		System.out.println("Delete key " + key + " At Position " + position + " head=" + head.getData());
 	}
 
-	private void deleteValue(int i) {
+	public void deleteValue(Node head,int i) {
 		System.out.println("Delete all keys " + i + " head=" + head.getData());
 		Node n = head, n_prv = null;
 		if (n != null && n.getData() == i) {
@@ -162,11 +162,12 @@ public class LinkedList {
 			if (n == null)
 				return;
 			n_prv.setNext(n.getNext());
+			
 			n = n_prv.getNext();
 		}
 	}
 
-	private int listLength(Node head2) {
+	protected int listLength(Node head2) {
 		int count = 0;
 		Node temp = head2;
 		while (temp != null) {
@@ -180,7 +181,7 @@ public class LinkedList {
 		return getRecursiveCount(head);
 	}
 
-	private int getRecursiveCount(Node node) {
+	public int getRecursiveCount(Node node) {
 		if (node == null)
 			return 0;
 
@@ -218,7 +219,7 @@ public class LinkedList {
 		System.out.println("Add at Bigining head=" + head.getData());
 	}
 
-	private void traversal(Node node) {
+	public void traversal(Node node) {
 		Node n = node;
 		while (n != null) {
 			System.out.print(n.getData() + " ");
@@ -227,21 +228,22 @@ public class LinkedList {
 		System.out.println();
 	}
 
-	private void createList(Node node2) {
+	public Node createList(Node head) {
 		head = new Node(1);
 		Node n1 = new Node(2);
 		Node n2 = new Node(3);
 		Node n3 = new Node(33);
-		Node n4 = new Node(3);
+		Node n4 = new Node(37);
 		head.setNext(n1);
 		n1.setNext(n2);
 		n2.setNext(n3);
 		n3.setNext(n4);
 		System.out.println("Start head=" + head.getData());
+		return head;
 	}
 
 	public static void main(String args[]) {
-		LinkedList list = new LinkedList();
+		LinkedList1 list = new LinkedList1();
 		list.getStart();
 	}
 }

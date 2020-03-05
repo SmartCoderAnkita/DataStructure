@@ -8,6 +8,10 @@ public class Node {
 		data = d;
 	}
 
+	public Node() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getData() {
 		return data;
 	}
